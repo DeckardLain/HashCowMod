@@ -43,7 +43,7 @@ elmCurrentRoundRejected.parentNode.insertBefore(elmCurrentRoundRejectPercent, el
 
 // ----------Calculate Reject Rate Delta----------
 var elmUserStats = document.getElementsByClassName("table compress")[0];
-var elmUserRejectRate = elmUserStats.getElementsByTagName("td")[5];
+var elmUserRejectRate = elmUserStats.getElementsByTagName("td")[3];
 
 var strUserRejectRate = elmUserRejectRate.textContent;
 strUserRejectRate = strUserRejectRate.substr(0,strUserRejectRate.length - 2);
