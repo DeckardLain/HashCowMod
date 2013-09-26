@@ -32,7 +32,10 @@ var elmCurrentRoundRejected = elmCurrentRoundStats.getElementsByTagName("td")[7]
 strCurrentRoundAccepted = elmCurrentRoundAccepted.textContent
 strCurrentRoundRejected = elmCurrentRoundRejected.textContent
 
-var strCurrentRoundRejectPercent = strCurrentRoundRejected / strCurrentRoundAccepted * 100;
+strCurrentRoundAccepted = strCurrentRoundAccepted * 1
+strCurrentRoundRejected = strCurrentRoundRejected * 1
+
+var strCurrentRoundRejectPercent = strCurrentRoundRejected / (strCurrentRoundRejected + strCurrentRoundAccepted) * 100;
 strCurrentRoundRejectPercent = strCurrentRoundRejectPercent.toFixed(2);
 strCurrentRoundRejectPercent = strCurrentRoundRejectPercent + "%";
 
