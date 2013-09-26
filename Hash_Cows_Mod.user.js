@@ -54,9 +54,18 @@ strUserRejectRate = strUserRejectRate.substr(0,strUserRejectRate.length - 2);
 strCurrentRoundRejectPercentVal = strCurrentRoundRejectPercent.substr(0, strCurrentRoundRejectPercent.length - 1);
 var strUserRejectDelta = strUserRejectRate - strCurrentRoundRejectPercentVal;
 
+if (strUserRejectDelta > 0)
+{
+	strUserRejectDelta = "+" + strUserRejectDelta.toFixed(2)
+}
+else
+{
+	strUserRejectDelta = strUserRejectDelta.toFixed(2)
+}
+
 // Format reject rate for display
 strUserRejectRate = strUserRejectRate * 1;
-var strUserRejectDisplay = strUserRejectRate.toFixed(2) + "%" + " (" + strUserRejectDelta.toFixed(2) + "%)";
+var strUserRejectDisplay = strUserRejectRate.toFixed(2) + "%" + " (" + strUserRejectDelta + "%)";
 
 var elmNewUserRejectRate = document.createElement("td");
 elmNewUserRejectRate.appendChild(document.createTextNode(strUserRejectDisplay));
