@@ -115,17 +115,26 @@ for (var i = elmRoundStatsRows.length - 1; i >= 0; i--)
 	
 	// Convert est. earnings to uBTC
 	var strEarnings = elmEarnings.textContent;
-	strEarnings = strEarnings.substr(0,strEarnings.length-4);
-	strEarnings = strEarnings * 1000000;
+	var strTemp = strEarnings.substr(strEarnings.length-3,3);	// Check if earnings are in BTC (auto-traded)
 	
-	// Calculate round profitability as uBTC / hour
-	var strRoundProfitability = strEarnings / strRoundTimeHours;
-	
-	// Format for display
-	strEarnings = strEarnings.toFixed(0);
-	strEarnings = strEarnings + " uBTC";
-	strRoundProfitability = strRoundProfitability.toFixed(0);
-	strRoundProfitability = strRoundProfitability + " uBTC/hr.";
+	if (strTemp == "BTC")
+	{
+		strEarnings = strEarnings.substr(0,strEarnings.length-4);
+		strEarnings = strEarnings * 1000000;
+		
+		// Calculate round profitability as uBTC / hour
+		var strRoundProfitability = strEarnings / strRoundTimeHours;
+		
+		// Format for display
+		strEarnings = strEarnings.toFixed(0);
+		strEarnings = strEarnings + " uBTC";
+		strRoundProfitability = strRoundProfitability.toFixed(0);
+		strRoundProfitability = strRoundProfitability + " uBTC/hr.";
+	}
+	else	// Skip profitability calculation and leave earnings untouched if coins are cashed out directly
+	{
+		var strRoundProfitability = "N/A";
+	}
 	
 	// Add round profitability value
 	var elmRoundProfitability = document.createElement("td");
